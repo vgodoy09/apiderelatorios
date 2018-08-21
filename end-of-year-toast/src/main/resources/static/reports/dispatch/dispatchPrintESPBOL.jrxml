@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="dispatchPrintESP" language="groovy" pageWidth="303" pageHeight="198" orientation="Landscape" columnWidth="263" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="2.8531167061100033"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="diretorioLOGO" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="diretorioLOGOULC" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="name" class="java.lang.String"/>
+	<field name="address" class="java.lang.String"/>
+	<field name="complement" class="java.lang.String"/>
+	<field name="district" class="java.lang.String"/>
+	<field name="city" class="java.lang.String"/>
+	<field name="state" class="java.lang.String"/>
+	<field name="country" class="java.lang.String"/>
+	<field name="cep" class="java.lang.String"/>
+	<field name="treatment" class="java.lang.String"/>
+	<field name="numberAtendance" class="java.lang.String"/>
+	<detail>
+		<band height="149" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="2" y="3" width="170" height="13" isRemoveLineWhenBlank="true"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="2" y="16" width="170" height="13" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{address} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($F{address} != null ? $F{address} : "")]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="2" y="29" width="170" height="13" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[($F{complement} != null || $F{complement} != "") || ($F{district} != null || $F{district} != "")]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($F{complement} != null ? $F{complement} : "")+($F{district} != null ? " "+$F{district} : "")]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Transparent" x="2" y="42" width="170" height="13" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{cep} != null || $F{city} != null]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($F{cep} != null ? $F{cep} : "")+($F{city} != null ? " "+$F{city} : "")]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="2" y="55" width="170" height="13" isRemoveLineWhenBlank="true"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{state}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="2" y="68" width="170" height="13" isRemoveLineWhenBlank="true"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{country}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="175" y="2" width="1" height="121"/>
+			</line>
+			<image scaleImage="FillFrame">
+				<reportElement key="image-1" x="179" y="3" width="79" height="43"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{diretorioLOGO}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="178" y="98" width="79" height="8"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="5"/>
+				</textElement>
+				<text><![CDATA[radiobolivia@nuevotiempo.org]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="178" y="90" width="79" height="8"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[+591-4-4402685]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="178" y="50" width="79" height="8"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Casilla 1919]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="178" y="74" width="79" height="8"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Cochabamba]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="178" y="82" width="79" height="8"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Bolivia]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="177" y="109" width="10" height="32"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{numberAtendance}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="2" y="123" width="170" height="22"/>
+				<jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" type="Code128" drawText="false" checksumRequired="false">
+					<jr:codeExpression><![CDATA[$F{numberAtendance}]]></jr:codeExpression>
+				</jr:barbecue>
+			</componentElement>
+			<staticText>
+				<reportElement x="178" y="66" width="79" height="8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Barrio Cala Cala]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="178" y="58" width="79" height="8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Calle Washington 2051]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

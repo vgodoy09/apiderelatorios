@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportPinkingPrint" language="groovy" pageWidth="450" pageHeight="300" orientation="Landscape" columnWidth="410" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="2.143588810000043"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+    <property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<parameter name="diretorioLOGO" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="diretorioDevolucao" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="diretorioMalaDireta" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="logoCorreios" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="numberAtendance" class="java.lang.String"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="address" class="java.lang.String"/>
+	<field name="complement" class="java.lang.String"/>
+	<field name="district" class="java.lang.String"/>
+	<field name="city" class="java.lang.String"/>
+	<field name="state" class="java.lang.String"/>
+	<field name="country" class="java.lang.String"/>
+	<field name="cep" class="java.lang.String"/>
+	<field name="barcodeAttendance" class="java.lang.String"/>
+	<field name="barcodeCep" class="java.lang.String"/>
+	<field name="numberUser" class="java.lang.String"/>
+	<field name="closeDateAttendance" class="java.lang.String"/>
+	<field name="logoName" class="java.lang.String"/>
+	<field name="arrestedCode" class="java.lang.String"/>
+	<detail>
+		<band height="260" splitType="Stretch">
+			<staticText>
+				<reportElement x="28" y="233" width="240" height="13"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[FECHAMENTO AUTORIZADO pode ser aberto pela ECT]]></text>
+			</staticText>
+			<line>
+				<reportElement x="135" y="0" width="1" height="67"/>
+			</line>
+			<staticText>
+				<reportElement x="139" y="0" width="110" height="12"/>
+				<textElement verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Cx Postal 7]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="139" y="12" width="110" height="12"/>
+				<textElement verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[12300-970 - Jacareí - SP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="139" y="24" width="110" height="12"/>
+				<textElement verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[www.novotempo.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="139" y="36" width="110" height="12"/>
+				<textElement verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Tel (12) 2127 3000]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="139" y="48" width="110" height="12"/>
+				<textElement verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fax (12) 2127 3001]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="172" y="67" width="161" height="12"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Destinatário]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement x="70" y="81" width="333" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{name} + ($F{arrestedCode} != null && !$F{arrestedCode}.isEmpty() ? " - Matr.: " + $F{arrestedCode} : "")]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="70" y="96" width="333" height="47"/>
+				<textElement verticalAlignment="Top" markup="html">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[( $F{address} != null ? $F{address}.replaceAll("(\r\n|\n\r|\r|\n)", "<br />") : $F{address})]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="70" y="112" width="333" height="15" isRemoveLineWhenBlank="true"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{complement}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="70" y="128" width="333" height="15" isRemoveLineWhenBlank="true"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($F{city} == null ? $F{country} : $F{district}+" - "+$F{city}+"/"+ $F{state}+" - "+$F{country})]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame">
+				<reportElement key="image-1" x="39" y="0" width="94" height="65"/>
+				<imageExpression class="java.lang.String"><![CDATA[$F{logoName}]]></imageExpression>
+			</image>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="41" y="67" width="41" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{numberAtendance}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame" hAlign="Center">
+				<reportElement x="72" y="149" width="185" height="82" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true"/>
+				<imageExpression class="java.lang.String"><![CDATA[$F{barcodeCep}]]></imageExpression>
+			</image>
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Top" isUsingCache="true">
+				<reportElement x="38" y="84" width="25" height="110" isPrintWhenDetailOverflows="true" forecolor="#FFFFFF"/>
+				<imageExpression class="java.lang.String"><![CDATA[$F{barcodeAttendance}]]></imageExpression>
+			</image>
+			<rectangle>
+				<reportElement x="38" y="84" width="7" height="110" forecolor="#FFFFFF"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="72" y="149" width="185" height="18" forecolor="#FFFFFF"/>
+			</rectangle>
+			<textField pattern="#####-###" isBlankWhenNull="true">
+				<reportElement x="139" y="147" width="116" height="13"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cep}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="71" y="147" width="67" height="13">
+					<printWhenExpression><![CDATA[($F{cep} != null)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CEP: ]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="82" y="67" width="90" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($F{numberUser} == null ? "" : $F{numberUser}) + $F{closeDateAttendance}]]></textFieldExpression>
+			</textField>
+			<rectangle radius="5">
+				<reportElement x="302" y="2" width="105" height="65"/>
+			</rectangle>
+			<image scaleImage="RetainShape">
+				<reportElement mode="Opaque" x="333" y="60" width="42" height="13"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{logoCorreios}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="306" y="1" width="97" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<text><![CDATA[Mala Direta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="306" y="12" width="97" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="Arial" size="13"/>
+				</textElement>
+				<text><![CDATA[Básica]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="306" y="24" width="97" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="7"/>
+				</textElement>
+				<text><![CDATA[9912331335/2013-DR/SPI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="306" y="35" width="97" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rede Novo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="306" y="46" width="97" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+					<font fontName="SansSerif" size="10" isBold="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Tempo]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

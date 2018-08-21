@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportPinkingPrint" language="groovy" pageWidth="450" pageHeight="300" orientation="Landscape" columnWidth="410" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="2.143588810000043"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="diretorioLOGO" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="diretorioDevolucao" class="java.lang.String"/>
+	<parameter name="diretorioMalaDireta" class="java.lang.String"/>
+	<parameter name="logoCorreios" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="numberAtendance" class="java.lang.String"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="address" class="java.lang.String"/>
+	<field name="complement" class="java.lang.String"/>
+	<field name="district" class="java.lang.String"/>
+	<field name="city" class="java.lang.String"/>
+	<field name="state" class="java.lang.String"/>
+	<field name="country" class="java.lang.String"/>
+	<field name="cep" class="java.lang.String"/>
+	<field name="barcodeAttendance" class="java.lang.String"/>
+	<field name="barcodeCep" class="java.lang.String"/>
+	<field name="numberUser" class="java.lang.String"/>
+	<field name="closeDateAttendance" class="java.lang.String"/>
+	<field name="logoName" class="java.lang.String"/>
+	<detail>
+		<band height="260" splitType="Stretch">
+			<line>
+				<reportElement x="135" y="0" width="1" height="67"/>
+			</line>
+			<staticText>
+				<reportElement x="139" y="0" width="264" height="12"/>
+				<textElement verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Mariano Paredes N72-49 y Rodrigo de Villalobos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="139" y="12" width="264" height="12"/>
+				<textElement verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Quito - Ecuador]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="139" y="24" width="264" height="12"/>
+				<textElement verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[www.nuevotiempo.org/Ecuador]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="139" y="36" width="264" height="12"/>
+				<textElement verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Tel (02) 2807423 - Quito]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="139" y="48" width="264" height="12"/>
+				<textElement verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[     (04) 2371211 - Guayaquil]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="172" y="67" width="161" height="12"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Destinatário]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="81" width="333" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="70" y="96" width="333" height="47"/>
+				<textElement verticalAlignment="Top" markup="html">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[( $F{address} != null ? $F{address}.replaceAll("(\r\n|\n\r|\r|\n)", "<br />") : $F{address})]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="70" y="112" width="333" height="15" isRemoveLineWhenBlank="true"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{complement}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="70" y="128" width="333" height="15" isRemoveLineWhenBlank="true"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($F{city} == null ? $F{country} : $F{district}+" - "+$F{city}+"/"+ $F{state}+" - "+$F{country})]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame">
+				<reportElement key="image-1" x="39" y="0" width="94" height="65"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{diretorioLOGO}]]></imageExpression>
+			</image>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="41" y="67" width="41" height="12"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{numberAtendance}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Top" isUsingCache="true">
+				<reportElement x="38" y="84" width="25" height="110" isPrintWhenDetailOverflows="true" forecolor="#FFFFFF"/>
+				<imageExpression class="java.lang.String"><![CDATA[$F{barcodeAttendance}]]></imageExpression>
+			</image>
+			<rectangle>
+				<reportElement x="38" y="84" width="7" height="110" forecolor="#FFFFFF"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="72" y="149" width="185" height="18" forecolor="#FFFFFF"/>
+			</rectangle>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="82" y="67" width="90" height="12"/>
+				<textElement verticalAlignment="Middle">
+					<font size="5"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($F{numberUser} == null ? "" : $F{numberUser}) + $F{closeDateAttendance}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
