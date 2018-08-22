@@ -55,8 +55,8 @@ public class ZipReport {
 			zip.putNextEntry(new ZipEntry(fileName));
 			zip.putNextEntry(new ZipEntry(fileName + "lote " + key + " etiqueta.pdf"));
 			zip.write(new DispatchLabelReport(DispatchLabelReport.MODEL_PT_86X42, SqlReport.sqlDispatchLabelToast(2, products, key+""), true ).dispatchLabelReport());
-//			zip.putNextEntry(new ZipEntry(fileName + "lote " + key + " boleto.pdf"));
-//			zip.write(new BankSlipReport(BankSlipReport.MODEL_DONATION, "sql").bankSlipReport());
+			zip.putNextEntry(new ZipEntry(fileName + "lote " + key + " boleto.pdf"));
+			zip.write(new BankSlipReport(BankSlipReport.MODEL_DONATION, SqlReport.sqlBankSlipToast(2, products, key+"")).bankSlipReport());
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
