@@ -30,6 +30,7 @@ public class DispatchLabelReport {
 	private final static String PARAMETER_DEVOLUCAO 	= "diretorioDevolucao";
 	private final static String PARAMETER_MALADIRETA 	= "diretorioMalaDireta";
 	private final static String PARAMETER_LOGO_CORREIOS = "logoCorreios";
+	private final static String PARAMETER_LOGO_NAME 	= "logoName";
 	public final static String LOGO_NAME 	   			= "logo_NT.jpg";
 	private final static String LOGO_NAME_DONATION		= "logos_nt_donation.jpg";
 //	private final static String LOGO_NAME_ESP  			= "logo_NT_ESP_New.png";
@@ -73,6 +74,7 @@ public class DispatchLabelReport {
 		parameters.put(PARAMETER_DEVOLUCAO, 	getPath("image/dispatch/"+IMG_DEVOLUCAO));
 		parameters.put(PARAMETER_MALADIRETA,	getPath("image/dispatch/"+IMG_MALADIRETA));
 		parameters.put(PARAMETER_LOGO_CORREIOS,	getPath("image/dispatch/"+IMG_LOGO_CORREIOS));
+		parameters.put(PARAMETER_LOGO_NAME,	getPath("image/"+DispatchLabelReport.LOGO_NAME));
 		parameters.put("sql", sql);
 		return parameters;
 	}

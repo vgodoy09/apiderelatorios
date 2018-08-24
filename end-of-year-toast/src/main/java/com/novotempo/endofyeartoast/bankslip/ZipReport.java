@@ -12,6 +12,8 @@ import java.util.zip.ZipOutputStream;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 
+import com.novotempo.endofyeartoast.services.donation.DonationService;
+
 public class ZipReport {
 	
 	
@@ -24,11 +26,12 @@ public class ZipReport {
 	}
 	
 	
-	public static byte[] createZip(String products) throws Exception {
+	public static byte[] createZip(String products, DonationService donationService) throws Exception {
 		Map<Integer, String> lots = getListLotZipCode();
+		donationService.insertIntoTableTempToast(products);
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
 		try(ZipOutputStream zip = new ZipOutputStream(bos)) {
-			lots.entrySet().stream().map(i -> getZip(i.getKey(), i.getValue(), zip, products)).count();
+			lots.entrySet().stream().map(i -> getZip(i.getKey(), i.getValue(), zip)).count();
 			zip.closeEntry();
 		}
 		return bos.toByteArray();
@@ -43,20 +46,20 @@ public class ZipReport {
 		    tempZipFile.deleteOnExit();
 		
 		try(FileOutputStream fos = new FileOutputStream(tempZipFile); ZipOutputStream zip = new ZipOutputStream(fos)) {
-			lots.entrySet().stream().map(i -> getZip(i.getKey(), i.getValue(), zip, products)).count();
+			lots.entrySet().stream().map(i -> getZip(i.getKey(), i.getValue(), zip)).count();
 			zip.closeEntry();
 		}
 		return tempZipFile;
 		
 	}
 	
-	private static ZipOutputStream getZip(Integer key, String fileName, ZipOutputStream zip, String products) {
+	private static ZipOutputStream getZip(Integer key, String fileName, ZipOutputStream zip) {
 		try {
 			zip.putNextEntry(new ZipEntry(fileName));
 			zip.putNextEntry(new ZipEntry(fileName + "lote " + key + " etiqueta.pdf"));
-			zip.write(new DispatchLabelReport(DispatchLabelReport.MODEL_PT_86X42, SqlReport.sqlDispatchLabelToast(2, products, key+""), true ).dispatchLabelReport());
+			zip.write(new DispatchLabelReport(DispatchLabelReport.MODEL_PT_86X42, SqlReport.sqlDispatchLabelToast(key+""), true ).dispatchLabelReport());
 			zip.putNextEntry(new ZipEntry(fileName + "lote " + key + " boleto.pdf"));
-			zip.write(new BankSlipReport(BankSlipReport.MODEL_DONATION, SqlReport.sqlBankSlipToast(2, products, key+"")).bankSlipReport());
+			zip.write(new BankSlipReport(BankSlipReport.MODEL_DONATION, SqlReport.sqlBankSlipToast(key+"")).bankSlipReport());
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

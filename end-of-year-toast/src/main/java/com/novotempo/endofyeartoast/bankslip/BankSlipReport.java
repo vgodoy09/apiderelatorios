@@ -1,6 +1,7 @@
 package com.novotempo.endofyeartoast.bankslip;
 
 import static com.novotempo.endofyeartoast.utils.CheckInstanceObject.IsNullOrIsEmpty;
+import static com.novotempo.endofyeartoast.utils.Utils.getPath;
 
 import java.io.File;
 import java.util.HashMap;
@@ -86,6 +87,11 @@ public class BankSlipReport {
 	private Map<String, Object> getParameters() {
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		parameters.put("sql", sql);
+		parameters.put("lado", getPath("image/bankslip/lado.jpg"));
+		parameters.put("logo", getPath("image/bankslip/logo_NT.jpg"));
+		parameters.put("ass", getPath("image/bankslip/assToninho.jpg"));
+		parameters.put("anjos", getPath("image/bankslip/logoAnjos.jpg"));
+		parameters.put("num", getPath("image/bankslip/237.png"));
 		if (MODEL_DONATION_BACK.equals(model)) {
 			parameters.put("propaganda", getImageBoleto(IMAGE_FIRST));
 			parameters.put("anjosA", getImageBoleto(IMAGE_SECOND));
