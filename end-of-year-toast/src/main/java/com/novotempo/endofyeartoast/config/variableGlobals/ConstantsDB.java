@@ -9,11 +9,11 @@ public class ConstantsDB {
 	public static final String OFICIAL_IP = "10.21.0.23018"; 
 
 	//usuário e senha donation
-	private static final String DONATION_SYS_USER_TEST = "corporatesysuser";
-	private static final String DONATION_PASSWORD_TEST = "cos104mg2";
+	private static final String DONATION_SYS_USER_TEST = "donationsysuser";
+	private static final String DONATION_PASSWORD_TEST = "t3par7me";
 
-	private static final String DONATION_SYS_USER_OFICIAL = "corporatesysuser";
-	private static final String DONATION_PASSWORD_OFICIAL = "cos104mg2";
+	private static final String DONATION_SYS_USER_OFICIAL = "donationsysuser";
+	private static final String DONATION_PASSWORD_OFICIAL = "t3par7me";
 
 	
 

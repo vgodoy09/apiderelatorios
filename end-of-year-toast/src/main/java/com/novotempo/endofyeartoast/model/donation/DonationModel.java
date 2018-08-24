@@ -7,11 +7,23 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedStoredProcedureQueries;
+import javax.persistence.NamedStoredProcedureQuery;
+import javax.persistence.ParameterMode;
+import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "Donation", schema = "dbo")  
+@NamedStoredProcedureQueries({
+        @NamedStoredProcedureQuery(name = "insertIntoTableTempToast", 
+        		procedureName = "STP_InsertIntoTableTempToast",
+        		parameters = {
+                         @StoredProcedureParameter(mode = ParameterMode.IN, name = "product", type = String.class),
+                }),
+        @NamedStoredProcedureQuery(name = "finishPickingToast", procedureName = "STP_FinishPickingToast")
+})
 public class DonationModel {
 	
 	@Id

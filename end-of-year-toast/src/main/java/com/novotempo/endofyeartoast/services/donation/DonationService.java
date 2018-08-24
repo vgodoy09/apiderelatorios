@@ -14,4 +14,8 @@ public class DonationService {
 	public void insertIntoTableTempToast(String product) {
 		donationRepository.insertIntoTableTempToast(product);
 	}
+	
+	public void finishPickingToast() {
+		donationRepository.finishPickingToast();
+	}
 }

@@ -34,6 +34,7 @@ public class ZipReport {
 			lots.entrySet().stream().map(i -> getZip(i.getKey(), i.getValue(), zip)).count();
 			zip.closeEntry();
 		}
+		donationService.finishPickingToast();
 		return bos.toByteArray();
 		
 	}
