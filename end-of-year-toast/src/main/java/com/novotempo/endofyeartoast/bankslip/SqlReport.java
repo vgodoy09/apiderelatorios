@@ -15,8 +15,9 @@ public class SqlReport {
 				"        d.employee,                      " +
 				"        d.closeDate,                     " +
 				"        d.numberUser                     " +
-				"from Donation..##DispatchLabelTemp d     " +
-				"where d.num in ("+lot+")                 " ;
+				"from ##DispatchLabelTemp d     		  " +
+				"where d.num in ("+lot+")                 " +
+				"order by d.fullName            		  " ;
 		return sql;
 	}
 	

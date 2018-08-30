@@ -71,7 +71,7 @@ public class NTJasperReport extends PdfPageEventHelper {
 		JRPropertiesUtil instance = JRPropertiesUtil.getInstance(DefaultJasperReportsContext.getInstance());
 		String classpath = instance.getProperty(JRCompiler.COMPILER_CLASSPATH);
 		instance.setProperty(JRCompiler.COMPILER_CLASSPATH, classpath);
-		System.err.println("Classpath: " + classpath);
+//		System.err.println("Classpath: " + classpath);
 
 		try {
 			JasperDesign jasperDesign = JRXmlLoader.load(getPath("reports/"+jasper));

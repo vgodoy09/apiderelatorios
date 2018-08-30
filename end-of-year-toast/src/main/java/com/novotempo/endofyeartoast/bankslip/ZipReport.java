@@ -26,7 +26,7 @@ public class ZipReport {
 	}
 	
 	
-	public static byte[] createZip(String products, DonationService donationService) throws Exception {
+	public static byte[] createZip(String products, DonationService donationService, Integer userId, String nameLabel) throws Exception {
 		Map<Integer, String> lots = getListLotZipCode();
 		donationService.insertIntoTableTempToast(products);
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -34,7 +34,7 @@ public class ZipReport {
 			lots.entrySet().stream().map(i -> getZip(i.getKey(), i.getValue(), zip)).count();
 			zip.closeEntry();
 		}
-		donationService.finishPickingToast();
+		donationService.finishPickingToast(products, userId, nameLabel);
 		return bos.toByteArray();
 		
 	}
@@ -64,6 +64,7 @@ public class ZipReport {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
+		System.err.println("Relatorio :" + key);
 		return zip;
 	}
 	

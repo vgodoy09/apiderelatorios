@@ -10,10 +10,10 @@ public class ConstantsDB {
 
 	//usuário e senha donation
 	private static final String DONATION_SYS_USER_TEST = "donationsysuser";
-	private static final String DONATION_PASSWORD_TEST = "t3par7me";
+	private static final String DONATION_PASSWORD_TEST = "****";
 
 	private static final String DONATION_SYS_USER_OFICIAL = "donationsysuser";
-	private static final String DONATION_PASSWORD_OFICIAL = "t3par7me";
+	private static final String DONATION_PASSWORD_OFICIAL = "*****";
 
 	
 

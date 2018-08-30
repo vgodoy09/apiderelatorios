@@ -7,10 +7,8 @@ import org.springframework.data.repository.query.Param;
 import com.novotempo.endofyeartoast.model.donation.DonationModel;
 
 public interface DonationRepository extends JpaRepository<DonationModel, Integer> {
-//	@Query(value = "exec Donation..STP_InsertIntoTableTempToast ?1", nativeQuery = true)
 	@Procedure(name="insertIntoTableTempToast")
 	void insertIntoTableTempToast(@Param("product") String product);
-//	@Query(value = "exec Donation..STP_FinishPickingToast", nativeQuery = true)
 	@Procedure(name="finishPickingToast")
-	void finishPickingToast();
+	void finishPickingToast(@Param("product") String product, @Param("userId") Integer userId, @Param("nameLabel") String nameLabel);
 }

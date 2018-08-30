@@ -21,15 +21,15 @@ public class ToastController {
 	@Autowired
 	DonationService donationService;
 
-	@GetMapping("/toastreportbyte/{productsId}")
-	public ResponseEntity<?> generationToastAndDispatchLabelReport(@PathVariable(value = "productsId") String productsId) throws Exception {
-	    return ResponseEntity.ok(new WrappedToast(createZip("15646", donationService)));
+	@GetMapping("/toastreportbyte/{productsId}/{userId}/{nameLabel}")
+	public ResponseEntity<?> generationToastAndDispatchLabelReport(@PathVariable(value = "productsId") String productsId, @PathVariable(value = "userId") Integer userId, @PathVariable(value = "nameLabel") String nameLabel) throws Exception {
+	    return ResponseEntity.ok(new WrappedToast(createZip("15646", donationService, userId, nameLabel)));
 	}
 	
 	
-	@GetMapping("/toastreportdownload/{productsId}")
-	public ResponseEntity<?> downloadZip(@PathVariable(value = "productsId") String productsId) throws Exception {
-		return new ResponseEntity<>(createZip(productsId,donationService), getHearder("brinde-fim-de-ano.zip","application/zip"), HttpStatus.OK);
-	}//http://localhost:8080/end-of-year-toast/api/toastreportdownload/15646
+	@GetMapping("/toastreportdownload/{productsId}/{userId}/{nameLabel}")
+	public ResponseEntity<?> downloadZip(@PathVariable(value = "productsId") String productsId, @PathVariable(value = "userId") Integer userId, @PathVariable(value = "nameLabel") String nameLabel) throws Exception {
+		return new ResponseEntity<>(createZip(productsId,donationService, userId, nameLabel), getHearder("brinde-fim-de-ano.zip","application/zip"), HttpStatus.OK);
+	}//http://localhost:8080/end-of-year-toast/api/toastreportdownload/15646/355822/15646-BOLETO
 	
 }
