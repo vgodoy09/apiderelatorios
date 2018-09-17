@@ -10,5 +10,5 @@ public interface DonationRepository extends JpaRepository<DonationModel, Integer
 	@Procedure(name="insertIntoTableTempToast")
 	void insertIntoTableTempToast(@Param("product") String product);
 	@Procedure(name="finishPickingToast")
-	void finishPickingToast(@Param("product") String product, @Param("userId") Integer userId, @Param("nameLabel") String nameLabel);
+	Integer finishPickingToast(@Param("product") String product, @Param("userId") Integer userId, @Param("nameLabel") String nameLabel);
 }

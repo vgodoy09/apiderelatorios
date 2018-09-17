@@ -7,11 +7,13 @@ import java.io.ObjectOutput;
 
 public class WrappedToast implements Externalizable {
 	private byte[] bankslipPdf;
+	private Integer batchLabelPrint_id;
 
 	public WrappedToast() {}
 
-	public WrappedToast(byte[] pdf) {
+	public WrappedToast(byte[] pdf, Integer batchLabelPrint_id) {
 		this.bankslipPdf = pdf;
+		this.batchLabelPrint_id = batchLabelPrint_id;
 	}
 
 	public byte[] getBankSlipPdf() {
@@ -22,13 +24,23 @@ public class WrappedToast implements Externalizable {
 		this.bankslipPdf = pdf;
 	}
 	
+	public Integer getBatchLabelPrint_id() {
+		return batchLabelPrint_id;
+	}
+
+	public void setBatchLabelPrint_id(Integer batchLabelPrint_id) {
+		this.batchLabelPrint_id = batchLabelPrint_id;
+	}
+
 	@Override
 	public void writeExternal(ObjectOutput out) throws IOException {
 		out.write(bankslipPdf, 0, bankslipPdf.length);
+		out.writeObject(batchLabelPrint_id);
 	}
 
 	@Override
 	public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
 		 in.readFully(bankslipPdf, 0, bankslipPdf.length);
+		 batchLabelPrint_id = (Integer) in.readObject();
 	}
 }

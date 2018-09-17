@@ -15,7 +15,7 @@ public class DonationService {
 		donationRepository.insertIntoTableTempToast(product);
 	}
 	
-	public void finishPickingToast(String product, Integer userId, String nameLabel) {
-		donationRepository.finishPickingToast(product, userId, nameLabel);
+	public Integer finishPickingToast(String product, Integer userId, String nameLabel) {
+		return donationRepository.finishPickingToast(product, userId, nameLabel);
 	}
 }

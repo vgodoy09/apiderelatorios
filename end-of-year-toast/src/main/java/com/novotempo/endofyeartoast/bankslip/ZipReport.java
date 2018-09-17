@@ -12,6 +12,7 @@ import java.util.zip.ZipOutputStream;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 
+import com.novotempo.endofyeartoast.model.WrappedToast;
 import com.novotempo.endofyeartoast.services.donation.DonationService;
 
 public class ZipReport {
@@ -26,7 +27,7 @@ public class ZipReport {
 	}
 	
 	
-	public static byte[] createZip(String products, DonationService donationService, Integer userId, String nameLabel) throws Exception {
+	public static WrappedToast createZip(String products, DonationService donationService, Integer userId, String nameLabel) throws Exception {
 		Map<Integer, String> lots = getListLotZipCode();
 		donationService.insertIntoTableTempToast(products);
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -34,8 +35,8 @@ public class ZipReport {
 			lots.entrySet().stream().map(i -> getZip(i.getKey(), i.getValue(), zip)).count();
 			zip.closeEntry();
 		}
-		donationService.finishPickingToast(products, userId, nameLabel);
-		return bos.toByteArray();
+		Integer batchLabelPrint_id = donationService.finishPickingToast(products, userId, nameLabel);
+		return new WrappedToast(bos.toByteArray(), batchLabelPrint_id);
 		
 	}
 	

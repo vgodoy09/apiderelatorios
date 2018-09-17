@@ -27,7 +27,8 @@ import javax.validation.constraints.NotNull;
         		parameters = {
                         @StoredProcedureParameter(mode = ParameterMode.IN, name = "product", type = String.class),
                         @StoredProcedureParameter(mode = ParameterMode.IN, name = "userId", type = Integer.class),
-                        @StoredProcedureParameter(mode = ParameterMode.IN, name = "nameLabel", type = String.class)
+                        @StoredProcedureParameter(mode = ParameterMode.IN, name = "nameLabel", type = String.class),
+                        @StoredProcedureParameter(mode = ParameterMode.OUT, name = "result", type = Integer.class)
                 })
         	
 })
