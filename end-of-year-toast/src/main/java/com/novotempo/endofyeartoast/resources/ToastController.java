@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.novotempo.endofyeartoast.model.WrappedToast;
 import com.novotempo.endofyeartoast.model.donation.PrintingToast;
 import com.novotempo.endofyeartoast.services.donation.DonationService;
 import com.novotempo.endofyeartoast.services.donation.LotesPrintedService;
@@ -35,7 +36,9 @@ public class ToastController {
 
 	@PostMapping("/toastreportbyte")
 	public ResponseEntity<?> generationToastAndDispatchLabelReport(@RequestBody PrintingToast printing) throws Exception {
-	    return ResponseEntity.ok(createZip(printing.getProduct_id()+"", donationService, printing.getUser_id(), printing.getLabelName()));
+		WrappedToast zip = createZip(printing.getProduct_id()+"", donationService, printing.getUser_id(), printing.getLabelName());
+		System.err.println(zip.getBatchLabelPrint_id() + ", \n" + zip.getBankSlipPdf());
+	    return ResponseEntity.ok(zip);
 	}
 	
 	@GetMapping("/listlotesprinted")

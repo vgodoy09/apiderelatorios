@@ -3,7 +3,7 @@ package com.novotempo.endofyeartoast.bankslip;
 public class SqlReport {
 	public static String sqlDispatchLabelToast(String lot) {
 		String sql = 
-				"select  d.numberAtendance,               " +
+				"select top 10 d.numberAtendance,               " +
 				"        d.fullName,                      " +
 				"        d.enderecoSac,                   " +
 				"        d.complementoSac,                " +
@@ -23,7 +23,7 @@ public class SqlReport {
 	
 	public static String sqlBankSlipToast(String lot) {
 		String sql = 
-				"select                         " +
+				"select  top 10                       " +
 		        "   b.codigoCedente,            " +
 				"	b.agencia,                  " +
 				"	b.bairroSac,                " +
