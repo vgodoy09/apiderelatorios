@@ -8,7 +8,7 @@ import com.novotempo.endofyeartoast.model.donation.DonationModel;
 
 public interface DonationRepository extends JpaRepository<DonationModel, Integer> {
 	@Procedure(name="insertIntoTableTempToast")
-	void insertIntoTableTempToast(@Param("product") String product);
+	void insertIntoTableTempToast(@Param("product") Integer product);
 	@Procedure(name="finishPickingToast")
-	Integer finishPickingToast(@Param("product") String product, @Param("userId") Integer userId, @Param("nameLabel") String nameLabel);
+	Integer finishPickingToast(@Param("product") Integer product, @Param("userId") Integer userId, @Param("nameLabel") String nameLabel);
 }

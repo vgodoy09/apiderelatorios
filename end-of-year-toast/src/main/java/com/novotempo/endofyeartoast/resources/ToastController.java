@@ -36,7 +36,7 @@ public class ToastController {
 
 	@PostMapping("/toastreportbyte")
 	public ResponseEntity<?> generationToastAndDispatchLabelReport(@RequestBody PrintingToast printing) throws Exception {
-		WrappedToast zip = createZip(printing.getProduct_id()+"", donationService, printing.getUser_id(), printing.getLabelName());
+		WrappedToast zip = createZip(printing.getProduct_id(), donationService, printing.getUser_id(), printing.getLabelName());
 		System.err.println(zip.getBatchLabelPrint_id() + ", \n" + zip.getBankSlipPdf());
 	    return ResponseEntity.ok(zip);
 	}
@@ -53,7 +53,7 @@ public class ToastController {
 	
 	
 	@GetMapping("/toastreportdownload/{productsId}/{userId}/{nameLabel}")
-	public ResponseEntity<?> downloadZip(@PathVariable(value = "productsId") String productsId, @PathVariable(value = "userId") Integer userId, @PathVariable(value = "nameLabel") String nameLabel) throws Exception {
+	public ResponseEntity<?> downloadZip(@PathVariable(value = "productsId") Integer productsId, @PathVariable(value = "userId") Integer userId, @PathVariable(value = "nameLabel") String nameLabel) throws Exception {
 		return new ResponseEntity<>(createZip(productsId,donationService, userId, nameLabel).getBankSlipPdf(), getHearder("brinde-fim-de-ano.zip","application/zip"), HttpStatus.OK);
 	}//http://localhost:8080/end-of-year-toast/api/toastreportdownload/15646/355822/15646-BOLETO
 	

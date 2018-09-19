@@ -11,11 +11,11 @@ public class DonationService {
 	@Autowired
 	DonationRepository donationRepository;
 	
-	public void insertIntoTableTempToast(String product) {
+	public void insertIntoTableTempToast(Integer product) {
 		donationRepository.insertIntoTableTempToast(product);
 	}
 	
-	public Integer finishPickingToast(String product, Integer userId, String nameLabel) {
+	public Integer finishPickingToast(Integer product, Integer userId, String nameLabel) {
 		return donationRepository.finishPickingToast(product, userId, nameLabel);
 	}
 }

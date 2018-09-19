@@ -27,7 +27,7 @@ public class ZipReport {
 	}
 	
 	
-	public static WrappedToast createZip(String products, DonationService donationService, Integer userId, String nameLabel) throws Exception {
+	public static WrappedToast createZip(Integer products, DonationService donationService, Integer userId, String nameLabel) throws Exception {
 		Map<Integer, String> lots = getListLotZipCode();
 		donationService.insertIntoTableTempToast(products);
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();

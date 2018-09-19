@@ -20,12 +20,12 @@ import javax.validation.constraints.NotNull;
         @NamedStoredProcedureQuery(name = "insertIntoTableTempToast", 
         		procedureName = "STP_InsertIntoTableTempToast",
         		parameters = {
-                         @StoredProcedureParameter(mode = ParameterMode.IN, name = "product", type = String.class)
+                         @StoredProcedureParameter(mode = ParameterMode.IN, name = "product", type = Integer.class)
                 }),
         @NamedStoredProcedureQuery(name = "finishPickingToast", 
         		procedureName = "STP_FinishPickingToast",
         		parameters = {
-                        @StoredProcedureParameter(mode = ParameterMode.IN, name = "product", type = String.class),
+                        @StoredProcedureParameter(mode = ParameterMode.IN, name = "product", type = Integer.class),
                         @StoredProcedureParameter(mode = ParameterMode.IN, name = "userId", type = Integer.class),
                         @StoredProcedureParameter(mode = ParameterMode.IN, name = "nameLabel", type = String.class),
                         @StoredProcedureParameter(mode = ParameterMode.OUT, name = "result", type = Integer.class)
